@@ -12,10 +12,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: profilepage(),
-      ),
+      theme: ThemeData(
+          scaffoldBackgroundColor: Colors.grey[900],
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.grey[900],
+            centerTitle: true,
+            elevation: 0,
+          )),
+      home: const Profilepage(),
     );
   }
 }
