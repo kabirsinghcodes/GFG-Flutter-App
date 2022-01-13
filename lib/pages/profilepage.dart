@@ -26,6 +26,7 @@ class Profilepage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const SizedBox(height: 50),
             Center(
               child: Text(
                 'Who\'s Watching ?',
@@ -50,7 +51,11 @@ class Profilepage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 netflixAccountImg(5, 'Dorami'),
-                netflixAccountImg(6, 'Gian'),
+                //This SizeBox used to maintain space
+                const SizedBox(
+                  height: 120,
+                  width: 120,
+                ),
               ],
             ),
           ],
@@ -61,17 +66,20 @@ class Profilepage extends StatelessWidget {
 
   Widget netflixAccountImg(int ac, String name) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Image(
-            height: 120,
-            width: 120,
-            fit: BoxFit.fill,
-            image: AssetImage('assets/images/netflixaccimg$ac.jpg'),
+        InkWell(
+          onTap: () {},
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image(
+              height: 120,
+              width: 120,
+              fit: BoxFit.fill,
+              image: AssetImage('assets/images/netflixaccimg$ac.jpg'),
+            ),
           ),
         ),
+        const SizedBox(height: 10),
         netflixAccName(name),
       ],
     );
