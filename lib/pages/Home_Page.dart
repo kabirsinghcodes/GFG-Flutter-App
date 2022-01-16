@@ -1,7 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gfgapp/constraints.dart';
+import 'package:gfgapp/pages/MyList_Page.dart';
+import 'package:gfgapp/pages/NetflixOrg_Page.dart';
+import 'package:gfgapp/pages/Previews_Page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,9 +23,9 @@ class _HomePageState extends State<HomePage> {
             children: [
               Stack(
                 children: [
-                  Image.asset('assets/images/sintel.jpg',
-                      color: const Color.fromARGB(160, 255, 255, 255),
-                      colorBlendMode: BlendMode.modulate),
+                  Image.asset(
+                    'assets/images/sintel.jpg',
+                  ),
                   Positioned(
                     top: 65,
                     left: 0,
@@ -107,44 +108,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Previews',
-                    style: CustomTextStyle().txt7,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 180,
-                width: double.infinity,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: movieImages.imges.length,
-                    itemBuilder: (contex, index) {
-                      return Container(
-                        width: 150.0,
-                        height: 150.0,
-                        margin: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 6.0,
-                            color: Colors.primaries[
-                                Random().nextInt(Colors.primaries.length)],
-                          ),
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(movieImages.imges[index]),
-                          ),
-                        ),
-                      );
-                    }),
-              ),
+              const PreviewPage(),
+              const MyListPage(),
+              const NetflixOrgPage(),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey[800],
+        onPressed: () {},
+        child: const Icon(
+          Icons.cast,
+          color: Colors.white,
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
