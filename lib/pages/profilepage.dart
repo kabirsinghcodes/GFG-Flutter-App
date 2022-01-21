@@ -1,109 +1,94 @@
 import 'package:flutter/material.dart';
-import 'package:gfgapp/pages/constraints.dart';
+import 'package:gfgapp/constraints.dart';
 
-class profilepage extends StatelessWidget {
-  const profilepage({Key? key}) : super(key: key);
+class Profilepage extends StatelessWidget {
+  const Profilepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          "Netflix".toUpperCase(),
+          style: CustomTextStyle().txt,
+        ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 18.0),
-            child: Icon(
-              Icons.edit,
-              size: 30,
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.edit),
             ),
           )
         ],
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.black,
-        title: Text(
-          "NETFLIX",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 35,
-          ),
-        ),
       ),
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
+            const SizedBox(height: 50),
+            Center(
               child: Text(
-                "Who's Watching?",
-                style: TextStyle(color: Colors.grey, fontSize: 20),
+                'Who\'s Watching ?',
+                style: CustomTextStyle().txt2,
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 90.0),
-                  child: netflixAccountImg(1, 'KSC'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: netflixAccountImg(2, 'Nobita'),
-                ),
+                netflixAccountImg(1, 'Doremon'),
+                netflixAccountImg(2, 'Nobita'),
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 90.0),
-                  child: netflixAccountImg(3, 'Shizuka'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: netflixAccountImg(4, 'Suneo'),
-                ),
+                netflixAccountImg(3, 'Shizuka'),
+                netflixAccountImg(4, 'Suneo'),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 90.0),
-              child: Row(
-                children: [
-                  netflixAccountImg(5, 'Dorami'),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                netflixAccountImg(5, 'Dorami'),
+                //This SizeBox used to maintain space
+                const SizedBox(
+                  height: 120,
+                  width: 120,
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
   }
-}
 
-Widget netflixAccountImg(int ac, String name) {
-  return Column(
-    children: [
-      ClipRRect(
-        borderRadius: BorderRadius.circular(7),
-        child: Image(
-          height: 110,
-          width: 110,
-          fit: BoxFit.fill,
-          image: AssetImage('assets/images/netflixaccimg$ac.jpg'),
+  Widget netflixAccountImg(int ac, String name) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {},
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image(
+              height: 120,
+              width: 120,
+              fit: BoxFit.fill,
+              image: AssetImage('assets/images/netflixaccimg$ac.jpg'),
+            ),
+          ),
         ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      netflixAccName(name),
-    ],
-  );
-}
+        const SizedBox(height: 10),
+        netflixAccName(name),
+      ],
+    );
+  }
 
-Widget netflixAccName(String name) {
-  return Text(
-    name,
-    style: CustomTextStyle().txt3,
-  );
+  Widget netflixAccName(String name) {
+    return Text(
+      name,
+      style: CustomTextStyle().txt3,
+    );
+  }
 }

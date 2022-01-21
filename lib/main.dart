@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gfgapp/pages/Home_Page.dart';
 import 'package:gfgapp/pages/profilepage.dart';
 
 void main() {
@@ -12,10 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: profilepage(),
-      ),
+      theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+            centerTitle: true,
+            elevation: 0,
+          )),
+      home: const HomePage(),
     );
   }
 }
